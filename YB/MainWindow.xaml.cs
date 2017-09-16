@@ -23,6 +23,23 @@ namespace YB
         public MainWindow()
         {
             InitializeComponent();
+            this.lastButton.Click += LastButton_Click;
+            this.nextButton.Click += NextButton_Click;
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.tabControl.SelectedIndex = this.tabControl.SelectedIndex + 1;
+            this.stepBar.Progress++;
+        }
+
+        private void LastButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.tabControl.SelectedIndex - 1 >= 0)
+            {
+                this.tabControl.SelectedIndex = this.tabControl.SelectedIndex - 1;
+                this.stepBar.Progress--;
+            }
         }
     }
 }

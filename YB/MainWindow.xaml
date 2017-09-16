@@ -39,7 +39,7 @@
         </Grid>
 
         <Grid Background="White" Grid.Row="1">
-            <WPF.UI:StepBar   x:Name="stepBar" HorizontalAlignment="Center" Background="White" ItemWidth="50">
+            <WPF.UI:StepBar Progress="{Binding SelectedIndex}" x:Name="stepBar" HorizontalAlignment="Center" Background="White" ItemWidth="50">
                 <WPF.UI:StepBarItem>身高体重</WPF.UI:StepBarItem>
                 <WPF.UI:StepBarItem>血压检测</WPF.UI:StepBarItem>
                 <WPF.UI:StepBarItem>血氧饱和度</WPF.UI:StepBarItem>
@@ -51,12 +51,12 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <WPF.UI:PathIconButton x:Name="PART_LastButton" HorizontalAlignment="Left" PathData="{StaticResource  Icon_Left}" Margin="20,0,0,0"
+            <WPF.UI:PathIconButton Name="lastButton" HorizontalAlignment="Left" PathData="{StaticResource  Icon_Left}" Margin="20,0,0,0"
                                             Style="{ StaticResource ButtonStyle}"/>
-            <WPF.UI:PathIconButton x:Name="PART_NextButton" HorizontalAlignment="Right" PathData="{StaticResource Icon_Right}" Margin="0,0,20,0"
+            <WPF.UI:PathIconButton Name="nextButton" HorizontalAlignment="Right" PathData="{StaticResource Icon_Right}" Margin="0,0,20,0"
                                             Style="{ StaticResource  ButtonStyle}"/>
 
-            <WPF.UI:ZTabControl Margin="60" Type="Card" >
+            <WPF.UI:ZTabControl Name="tabControl" Margin="60" Type="Card" >
                 <TabControl.ItemContainerStyle>
                     <Style>
                         <Setter Property="TabItem.Visibility" Value="Hidden"/>
@@ -107,8 +107,6 @@
 
             </WPF.UI:ZTabControl>
         </Grid>
-
-
 
     </Grid>
 </Window>
