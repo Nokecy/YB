@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZdfFlatUI;
 
 namespace YB
 {
@@ -27,6 +28,20 @@ namespace YB
             this.nextButton.Click += NextButton_Click;
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // 设置全屏    
+            this.WindowState = System.Windows.WindowState.Normal;
+            this.WindowStyle = System.Windows.WindowStyle.None;
+            this.ResizeMode = System.Windows.ResizeMode.NoResize;
+            this.Topmost = true;
+
+            this.Left = 0.0;
+            this.Top = 0.0;
+            this.Width = System.Windows.SystemParameters.PrimaryScreenWidth;
+            this.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
+        }
+
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             this.tabControl.SelectedIndex = this.tabControl.SelectedIndex + 1;
@@ -40,6 +55,19 @@ namespace YB
                 this.tabControl.SelectedIndex = this.tabControl.SelectedIndex - 1;
                 this.stepBar.Progress--;
             }
+        }
+
+        private void StepBarItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var obj = (StepBarItem)sender;
+            var number = int.Parse(obj.Number) - 1;
+            this.stepBar.Progress = number;
+            this.tabControl.SelectedIndex = number;
+        }
+
+        private void quit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
         }
     }
 }

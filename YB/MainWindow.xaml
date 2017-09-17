@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YB"
         xmlns:WPF.UI="clr-namespace:ZdfFlatUI;assembly=WPF.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1200">
+        Title="MainWindow" Height="700" Width="1200" Loaded="Window_Loaded">
 
     <Window.Resources>
         <Style x:Key="ButtonStyle" TargetType="{x:Type WPF.UI:PathIconButton}">
@@ -40,7 +40,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -62,19 +62,19 @@
 
                 <Label Foreground="White" VerticalAlignment="Center" Content="2017-09-16 15:12:30"/>
 
-                <WPF.UI:FlatButton VerticalAlignment="Center" Width="70" Height="28" Content="退出" CornerRadius="3" Type="primary" />
+                <WPF.UI:FlatButton Name="quit" VerticalAlignment="Center" Width="70" Height="28" Content="退出" CornerRadius="3" Type="primary" Click="quit_Click" />
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1">
             <WPF.UI:StepBar Progress="{Binding SelectedIndex}" x:Name="stepBar" HorizontalAlignment="Center" ItemWidth="50">
-                <WPF.UI:StepBarItem Foreground="White">身高体重</WPF.UI:StepBarItem>
-                <WPF.UI:StepBarItem Foreground="White">血压检测</WPF.UI:StepBarItem>
-                <WPF.UI:StepBarItem Foreground="White">血氧饱和度</WPF.UI:StepBarItem>
-                <WPF.UI:StepBarItem Foreground="White">体脂检测</WPF.UI:StepBarItem>
-                <WPF.UI:StepBarItem Foreground="White">体温检测</WPF.UI:StepBarItem>
-                <WPF.UI:StepBarItem Foreground="White">呼吸检测</WPF.UI:StepBarItem>
-                <WPF.UI:StepBarItem Foreground="White">报告打印</WPF.UI:StepBarItem>
+                <WPF.UI:StepBarItem MouseLeftButtonUp="StepBarItem_MouseLeftButtonUp" Foreground="White">身高体重</WPF.UI:StepBarItem>
+                <WPF.UI:StepBarItem MouseLeftButtonUp="StepBarItem_MouseLeftButtonUp" Foreground="White">血压检测</WPF.UI:StepBarItem>
+                <WPF.UI:StepBarItem MouseLeftButtonUp="StepBarItem_MouseLeftButtonUp" Foreground="White">血氧饱和度</WPF.UI:StepBarItem>
+                <WPF.UI:StepBarItem MouseLeftButtonUp="StepBarItem_MouseLeftButtonUp" Foreground="White">体脂检测</WPF.UI:StepBarItem>
+                <WPF.UI:StepBarItem MouseLeftButtonUp="StepBarItem_MouseLeftButtonUp" Foreground="White">体温检测</WPF.UI:StepBarItem>
+                <WPF.UI:StepBarItem MouseLeftButtonUp="StepBarItem_MouseLeftButtonUp" Foreground="White">呼吸检测</WPF.UI:StepBarItem>
+                <WPF.UI:StepBarItem MouseLeftButtonUp="StepBarItem_MouseLeftButtonUp" Foreground="White">报告打印</WPF.UI:StepBarItem>
             </WPF.UI:StepBar>
         </Grid>
 
@@ -101,6 +101,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="15"></ColumnDefinition>
                             <ColumnDefinition Width="300"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
@@ -110,7 +111,7 @@
                             </Grid.Background>
                         </Grid>
 
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="2">
                             <Grid.Background>
                                 <ImageBrush ImageSource="pack://application:,,,/images/rightBorder.png"/>
                             </Grid.Background>
@@ -118,33 +119,42 @@
 
                                 <StackPanel Height="65" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
                                     <Border Background="#3399FF" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="0,0,0,0" Height="30" Width="30" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    <TextBlock Text="正常" Foreground="#FFF" FontSize="16"  Height="20"/>
+                                    <TextBlock Text="  正常" Foreground="#FFF" FontSize="16"  Height="20"/>
                                     <Border Background="#FFC7C74A" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,0,0,0" Height="30" Width="30" CornerRadius="5"/>
-                                    <TextBlock Text="低" Foreground="#FFF" FontSize="16" Height="20" />
+                                    <TextBlock Text="  低" Foreground="#FFF" FontSize="16" Height="20" />
                                     <Border Background="#FFFF5A1D" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,0,0,0" Height="30" Width="30" CornerRadius="5"/>
-                                    <TextBlock Text="高" Foreground="#FFF" FontSize="16"  Height="20" />
+                                    <TextBlock Text="  高" Foreground="#FFF" FontSize="16"  Height="20" />
                                 </StackPanel>
 
                                 <StackPanel Orientation="Vertical">
 
-                                    <Border Background="#3399FF" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
+                                    <Border SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="pack://application:,,,/images/normal.png"/>
+                                        </Border.Background>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                                             <TextBlock Text="身高" Foreground="#FFF" FontSize="16" />
-                                            <TextBlock Text="      155 cm" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
+                                            <TextBlock Text="      155 cm" Foreground="#FFF" FontSize="16" FontWeight="Bold" />
                                         </StackPanel>
                                     </Border>
 
-                                    <Border Background="#FFC7C74A" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
+                                    <Border SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="pack://application:,,,/images/low.png"/>
+                                        </Border.Background>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                                             <TextBlock Text="体重" Foreground="#FFF" FontSize="16" />
-                                            <TextBlock Text="       46.1 KG" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
+                                            <TextBlock Text="       46.1 KG" Foreground="#FFF" FontSize="16" FontWeight="Bold"  />
                                         </StackPanel>
                                     </Border>
 
-                                    <Border Background="#FFFF5A1D" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
+                                    <Border  SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="pack://application:,,,/images/hi.png"/>
+                                        </Border.Background>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                                             <TextBlock Text="BMI" Foreground="#FFF" FontSize="16" />
-                                            <TextBlock Text="       19.2" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
+                                            <TextBlock Text="       19.2" Foreground="#FFF"  FontSize="16" FontWeight="Bold" />
                                         </StackPanel>
                                     </Border>
 
@@ -156,7 +166,9 @@
 
                 <TabItem Header="血压检测">
                     <Border>
-                        <TextBlock Text="血压检测" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Border.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/images/5.png"/>
+                        </Border.Background>
                     </Border>
                 </TabItem>
 
