@@ -79,12 +79,17 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <WPF.UI:PathIconButton Name="lastButton" HorizontalAlignment="Left" PathData="{StaticResource  Icon_Left}" Margin="20,0,0,0"
-                                            Style="{ StaticResource ButtonStyle}"/>
-            <WPF.UI:PathIconButton Name="nextButton" HorizontalAlignment="Right" PathData="{StaticResource Icon_Right}" Margin="0,0,20,0"
-                                            Style="{ StaticResource  ButtonStyle}"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
 
-            <WPF.UI:ZTabControl Name="tabControl" Margin="60" Type="Card" >
+            <local:ImageButton Grid.Column="0" x:Name="lastButton" Width="31" Height="31" ImageSource="pack://application:,,,/images/left.png" Margin="0,0,0,0"/>
+
+            <local:ImageButton  Grid.Column="2" x:Name="nextButton" Width="31" Height="31" ImageSource="pack://application:,,,/images/right.png" Margin="0,0,0,0"/>
+
+            <WPF.UI:ZTabControl  Grid.Column="1" Name="tabControl" Margin="10" Type="Card" >
                 <TabControl.ItemContainerStyle>
                     <Style>
                         <Setter Property="TabItem.Visibility" Value="Hidden"/>
@@ -114,32 +119,32 @@
                                 <StackPanel Height="65" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
                                     <Border Background="#3399FF" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="0,0,0,0" Height="30" Width="30" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     <TextBlock Text="正常" Foreground="#FFF" FontSize="16"  Height="20"/>
-                                    <Border Background="SaddleBrown" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,0,0,0" Height="30" Width="30" CornerRadius="5"/>
+                                    <Border Background="#FFC7C74A" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,0,0,0" Height="30" Width="30" CornerRadius="5"/>
                                     <TextBlock Text="低" Foreground="#FFF" FontSize="16" Height="20" />
-                                    <Border Background="Red" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,0,0,0" Height="30" Width="30" CornerRadius="5"/>
+                                    <Border Background="#FFFF5A1D" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,0,0,0" Height="30" Width="30" CornerRadius="5"/>
                                     <TextBlock Text="高" Foreground="#FFF" FontSize="16"  Height="20" />
                                 </StackPanel>
 
                                 <StackPanel Orientation="Vertical">
 
                                     <Border Background="#3399FF" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
-                                        <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                                             <TextBlock Text="身高" Foreground="#FFF" FontSize="16" />
-                                            <TextBlock Text="#3399ff" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
+                                            <TextBlock Text="      155 cm" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
                                         </StackPanel>
                                     </Border>
 
-                                    <Border Background="#3399FF" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
-                                        <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                                    <Border Background="#FFC7C74A" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                                             <TextBlock Text="体重" Foreground="#FFF" FontSize="16" />
-                                            <TextBlock Text="#3399ff" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
+                                            <TextBlock Text="       46.1 KG" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
                                         </StackPanel>
                                     </Border>
 
-                                    <Border Background="Red" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
-                                        <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                                    <Border Background="#FFFF5A1D" SnapsToDevicePixels="True" UseLayoutRounding="True" Margin="30,30,30,0" Height="80" CornerRadius="5">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                                             <TextBlock Text="BMI" Foreground="#FFF" FontSize="16" />
-                                            <TextBlock Text="#3399ff" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
+                                            <TextBlock Text="       19.2" Foreground="#BFDFFF" FontSize="13" Margin="0,5,0,0" />
                                         </StackPanel>
                                     </Border>
 
